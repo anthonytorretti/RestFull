@@ -1,0 +1,21 @@
+{
+    "name": "AnthonyTorretti/RestMVC",
+    "type": "project",
+    "description": "An extremely simple naked PHP application ",
+    "keywords": ["skeleton", "boilerplate", "php", "mvc", "api","rest"],
+    "homepage": "https://github.com/anthonytorretti/restphp",
+    "license": "Opensource",
+    "authors": [
+        {
+            "name": "Anthony Daniel Torretti",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/anthonytorretti/restphp/issues",
+        "source": "https://github.com/anthonytorretti/restphp"
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
