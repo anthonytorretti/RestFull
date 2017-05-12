@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @access public
+ * @package Core
+ */
 
 class Application
 {

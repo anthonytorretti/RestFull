@@ -16,7 +16,7 @@ class Controller
     function __construct()
     {
 
-        $this->loadModel();
+        $this->model = "";
         $this->Response = new ResponseApi();
     }
 
@@ -42,6 +42,12 @@ class Controller
     }
 
     public function post(){
+        if(isset($_POST)){
+            $data=$_POST;
+            $device = new Device($data);
+            PersistenceManager::getInstance()->store($device);
+        }
+
         header('Content-type: application/json');
         echo("Post devices");
     }
@@ -53,16 +59,5 @@ class Controller
     public function delete(){
         header('Content-type: application/json');
         echo("DELETE devices");
-    }
-
-
-    /**
-     * Loads the "defaultmodel".
-     * @set object model as String
-     */
-
-    public function loadModel()
-    {
-        $this->model = "";
     }
 }

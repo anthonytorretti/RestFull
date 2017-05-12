@@ -6,6 +6,11 @@
  * Time: 7:54 AM
  */
 
+/**
+ * @access public
+ * @package Core
+ */
+
 class Router
 {
 

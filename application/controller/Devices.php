@@ -13,6 +13,7 @@
 
 class devices extends Controller
 {
+
    /**
     * Extend Parent Constructor to set Model of Controller
     */

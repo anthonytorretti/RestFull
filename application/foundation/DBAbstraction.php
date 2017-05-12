@@ -86,7 +86,7 @@ class DBAbstraction {
 
         try {
             $this->stmt->execute();
-            return $this->stmt->fetch(PDO::FETCH_BOTH);
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
         }  catch(PDOException $e) {
             die($e->getMessage());
         }
@@ -96,7 +96,7 @@ class DBAbstraction {
 
         try {
             $this->stmt->execute();
-            return $this->stmt->fetchAll(PDO::FETCH_BOTH);
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         }  catch(PDOException $e) {
             die($e->getMessage());
         }

@@ -81,9 +81,15 @@ class PersistentModel {
                 'FROM '.$this->_table.' ' .
                 'WHERE '.$this->_key.' = \''.$key.'\'';
         $this->dba->query($query);
-        return $this->dba->result( ); 
+        return $this->dba->result( );
     }
-    
+
+    public function loadAll() {
+        $query='SELECT * ' .
+            'FROM '.$this->_table.' ';
+        $this->dba->query($query);
+        return $this->dba->resultset( );
+    }
 
     public function delete(& $object) {
         $arrayObject=get_object_vars($object);
