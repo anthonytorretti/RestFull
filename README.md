@@ -1,4 +1,4 @@
-![RESTPHP - A basic BoilerPlate to start building your RestFull Application]
+![RESTPHP - A basic BoilerPlate to start building your RestFull Application](logo.jpg)
 
 # RESTPHP
 
