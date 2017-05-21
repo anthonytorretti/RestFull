@@ -32,6 +32,11 @@ class Router
         // parse the Uri to retrieve Controller Method and Params
 
         $this->parseUri();
+
+
+    }
+
+    public function run(){
         // check for controller: no controller given ? then load start-page
         if (!$this->controller) {
 
@@ -43,7 +48,6 @@ class Router
             //ROUTE TO THE API
             $this->route();
         }
-
     }
 
     private function route(){

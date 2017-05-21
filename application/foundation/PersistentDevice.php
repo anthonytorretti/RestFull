@@ -26,9 +26,12 @@ class PersistentDevice extends PersistentModel{
 
     }
 
-    public function load( $deviceid ) {
+    public function load( $deviceid ,$join=false) {
 
-        $res = parent::load( $deviceid );
+
+        $joinarray=array(array("categories","categoryid"),array("brands","brandid"));
+
+        $res = parent::load($deviceid,$joinarray);
 
         $device = new Device( $res );
 
@@ -45,17 +48,35 @@ class PersistentDevice extends PersistentModel{
         return $device;
         
     } 
-    
-    public function loadAll () {
 
 
-        $arrRes = parent::loadAll();
+    public function loadAll ($joinarray=false) {
+
+
+        $joinarray=array(array("categories","categoryid"),array("brands","brandid"));
+
+        $arrRes = parent::loadAll($joinarray);
 
         $devices = array();
         foreach ($arrRes as $res) {
            $device = new Device( $res );
            $devices[] = $device;
         }
+        return $devices;
+    }
+
+    public function getDevicesByCatAndBrand(Category $category,Brand $brand){
+        $filters=array(array("categoryid","=",$category->categoryid),array("brandid","=",$brand->brandid));
+        $res=$this->search($filters);
+        $devices=array();
+        foreach ($res as $resdevice){
+            $device= new Device($resdevice);
+            $device->brandname=$brand->brandname;
+            $device->categoryname=$category->categoryname;
+            $devices[]=$device;
+
+        }
+
         return $devices;
     }
     

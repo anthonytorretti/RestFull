@@ -76,20 +76,36 @@ class PersistentModel {
         }
     } 
     
-    public function load( $key ) {
+    public function load( $key,$joinarr=false ) {
         $query='SELECT * ' .
-                'FROM '.$this->_table.' ' .
-                'WHERE '.$this->_key.' = \''.$key.'\'';
+            'FROM '.$this->_table.' ';
+
+        if(!empty($joinarr)) {
+            foreach ($joinarr as $join) {
+                $query .= ' INNER JOIN ' . $join[0] . ' ON ' . $join[0] . "." . $join[1] . "=" . $this->_table . "." . $join[1];
+            }
+        }
+        $query .=' WHERE '.$this->_key.'='.$key;
+
         $this->dba->query($query);
         return $this->dba->result( );
     }
 
-    public function loadAll() {
+    public function loadAll($joinarr=false) {
         $query='SELECT * ' .
             'FROM '.$this->_table.' ';
+
+        if(!empty($joinarr)) {
+            foreach ($joinarr as $join) {
+                $query .= ' INNER JOIN ' . $join[0] . ' ON ' .  $join[0] . "." . $join[1] .'=' . $this->_table . "." . $join[1];
+            }
+        }
+
         $this->dba->query($query);
         return $this->dba->resultset( );
     }
+
+
 
     public function delete(& $object) {
         $arrayObject=get_object_vars($object);

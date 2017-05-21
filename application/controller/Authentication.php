@@ -20,7 +20,7 @@ class Authentication
     private function authenticate()
     {
         foreach (getallheaders() as $name => $value) {
-            if ($name == "authorization") {
+            if ($name == "authorization" || $name == "Authorization") {
                 $this->userkey=$value;
 
                 if ($this->userkey == $this->apikey)

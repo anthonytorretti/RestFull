@@ -8,10 +8,12 @@ class PersistenceManager {
     private static $instance = NULL;
     
     private $persistentDevice = NULL;
+    private $persistentCategory = NULL;
 
     private function __construct(){
         
         $this->persistentDevice = new PersistentDevice();
+        $this->persistentCategory = new PersistentCategory();
 
     }
     

@@ -1,9 +1,17 @@
 <?php
 
 /**
+ * Created by PhpStorm.
+ * User: daniel687
+ * Date: 3/12/17
+ * Time: 8:53 PM
+ */
+
+/**
  * @access public
  * @package Core
  */
+
 
 class Application
 {
@@ -11,14 +19,16 @@ class Application
 
     public function __construct()
     {
+
         $auth= new Authentication();
 
         if($auth->isauthenticated()){
             $router = new Router();
+            $router->run();
         }
         else{
-        $page = new Problem();
-        $page->auth();
+        $problem = new Problem();
+        $problem->auth();
     }
 
 
