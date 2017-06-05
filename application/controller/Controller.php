@@ -30,8 +30,8 @@ class Controller
         $id=$params[0];
         if($params==null){
 
-            $devices=  PersistenceManager::getInstance()->loadAll($this->model);
-            $this->Response->send($devices);
+            $data=  PersistenceManager::getInstance()->loadAll($this->model);
+            $this->Response->send($data);
 
         }
         else {
@@ -42,14 +42,8 @@ class Controller
     }
 
     public function post(){
-        if(isset($_POST)){
-            $data=$_POST;
-            $device = new Device($data);
-            PersistenceManager::getInstance()->store($device);
-        }
+       $this->Response->send($this->model." ADDED");
 
-        header('Content-type: application/json');
-        echo("Post devices");
     }
 
     public function put(){

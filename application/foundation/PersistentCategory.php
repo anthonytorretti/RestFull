@@ -82,6 +82,7 @@ class PersistentCategory extends PersistentModel{
                 $categories[] = $category;
             }
         }
+
         return $categories;
     }
     

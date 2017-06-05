@@ -8,13 +8,17 @@
  */
 class Model
 {
-
+    protected $fillable;
     function __construct($data)
     {
         foreach ($data as $key => $value){
             $this->{$key} = $value;
         }
 
+    }
+
+   public  function get_fillable(){
+        return $this->fillable;
     }
 
 }

@@ -40,17 +40,25 @@ class PersistentModel {
     
     public function store( $object ) {
         $properties = get_object_vars( $object );
+        $fillable=$object->get_fillable();
+       // echo(json_encode($fillable));
+        foreach ($properties as $key =>$value){
+            if(!in_array($key,$fillable))
+                unset($properties[$key]);
+        }
+
         $table = $this->_table;
         foreach ($properties as $key => $value) {
+
             if (is_object($value)) {
                 if (get_class($value) == "DateTime") {
                     $value = $value->format('Y-m-d H:i:s');
                 }
-            }        
-            $cols[] = $key; 
+            }
+            $cols[] = $key;
             $values[] = $this->dba->quote($value);
         }
-        
+
         $q = 'INSERT INTO ' . $table . ' (' . implode(", ", $cols) . ') VALUES (' .implode(", ", $values).')';
 
         if ( !$this->_auto_increment  ) {
@@ -60,21 +68,21 @@ class PersistentModel {
 
         } else {
 
-            try {  
+            try {
                 $this->dba->beginTransaction();
                     $this->dba->query( $q );
                     $this->dba->execute();
                     $this->dba->query( "SELECT LAST_INSERT_ID()" );
                     $id_as_array = $this->dba->result();
                 $this->dba->commit();
-                return (int) $id_as_array[0];        
+                return (int) $id_as_array[0];
             } catch (Exception $e) {
                 $this->dba->rollback();
                 print "Failure: " . $e->getMessage();
             }
 
         }
-    } 
+    }
     
     public function load( $key,$joinarr=false ) {
         $query='SELECT * ' .

@@ -8,45 +8,28 @@
 class Device extends Model
 {
 
-    public $id;
+    protected $fillable=["categoryid","brandid","model","price"];
+
+    protected $id;
 
     /**
      * @AssociationType Model.Category
      * @AssociationMultiplicity 1
      * @AssociationKind Aggregation
      */
-    protected $categoryid;
+    public $categoryid;
     public $categoryname;
-
 
     /**
      * @AssociationType Model.Brand
      * @AssociationMultiplicity 1
      * @AssociationKind Aggregation
      */
-    protected $brandid;
+    public $brandid;
     public $brandname;
 
     public $model;
     public $price;
-
-//    public $chipset;
-//    public $processor;
-//    public $gpu;
-//    public $ram;
-//    public $memory;
-//    public $hasExpMem;
-//    public $screenSize;
-//    public $screenRes;
-//    public $backCameraRes;
-//    public $frontCameraRes;
-//    public $hasFlash = false;
-//    public $hasAutofocus = false;
-//    public $backCameraVid;
-//    public $frontCameraVid;
-//    public $hasWifi = false;
-//    public $hasBluetooth = false;
-//    public $hasGps = false;
 
     /**
      * @AssociationType Model.Reviews
@@ -54,7 +37,6 @@ class Device extends Model
      * @AssociationKind Aggregation
      */
     public $reviews = array();
-
 
     function addReview(Review $review)
     {

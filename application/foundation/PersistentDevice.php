@@ -11,6 +11,7 @@ class PersistentDevice extends PersistentModel{
 
     public function store( $device ) {
 
+
         parent::store($device);
 
         //ANY EXTRA LOGIC GOES HERE

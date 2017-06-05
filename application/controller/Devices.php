@@ -24,6 +24,16 @@ class devices extends Controller
         $this->model="Device";
     }
 
+    public function post()
+    {
+        if (isset($_POST)) {
+            $data = $_POST;
+            $device = new Device($data);
+echo(json_encode($device));
+            PersistenceManager::getInstance()->store($device);
+        }
+        parent::post();
+    }
 
     /**
      * EXTRA NON CRUD OPERATIONS GO HERE

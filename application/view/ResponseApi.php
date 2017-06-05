@@ -11,6 +11,7 @@ class ResponseApi
     public function send($data){
         $json = json_encode($data);
         header('Content-type: application/json');
+        header('Access-Control-Allow-Origin','*',false);
         echo($json);
     }
 

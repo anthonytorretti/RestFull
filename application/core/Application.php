@@ -19,17 +19,19 @@ class Application
 
     public function __construct()
     {
+        $router = new Router();
+        $router->run();
 
         $auth= new Authentication();
 
-        if($auth->isauthenticated()){
-            $router = new Router();
-            $router->run();
-        }
-        else{
-        $problem = new Problem();
-        $problem->auth();
-    }
+//        if($auth->isauthenticated()){
+//            $router = new Router();
+//            $router->run();
+//        }
+//        else{
+//        $problem = new Problem();
+//        $problem->auth();
+//    }
 
 
     }
