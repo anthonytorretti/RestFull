@@ -20,7 +20,7 @@ class Application
     public function __construct()
     {
 
-        if (ENABLE_AUTHENTICATION){
+        if (AUTHENTICATION_ENABLED){
             $auth= new Authentication();
 
             if($auth->isauthenticated()){
