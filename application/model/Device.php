@@ -8,9 +8,15 @@
 class Device extends Model
 {
 
-    protected $fillable=["categoryid","brandid","model","price"];
+  /**  Define what columns can be filled during the storage of the Device (Protection for Sql Injection)
+  */
+  protected $fillable=["categoryid","brandid","model","price"];
+
 
     protected $id;
+    public $model;
+    public $price;
+
 
     /**
      * @AssociationType Model.Category
@@ -28,8 +34,6 @@ class Device extends Model
     public $brandid;
     public $brandname;
 
-    public $model;
-    public $price;
 
     /**
      * @AssociationType Model.Reviews

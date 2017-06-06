@@ -9,11 +9,13 @@ class PersistenceManager {
     
     private $persistentDevice = NULL;
     private $persistentCategory = NULL;
+    private $persistentReview = NULL;
 
     private function __construct(){
         
         $this->persistentDevice = new PersistentDevice();
         $this->persistentCategory = new PersistentCategory();
+        $this->persistentReview = new PersistentReview();
 
     }
     

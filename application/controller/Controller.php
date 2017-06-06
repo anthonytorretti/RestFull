@@ -42,7 +42,12 @@ class Controller
     }
 
     public function post(){
-       $this->Response->send($this->model." ADDED");
+        if (isset($_POST)) {
+            $data = $_POST;
+            $object = new $this->model($data);
+            PersistenceManager::getInstance()->store($object);
+        }
+            $this->Response->send($this->model." ADDED");
 
     }
 

@@ -13,6 +13,10 @@
 class Review extends Model
 {
 
+    protected $fillable=["title","deviceid","description","vote","userid"];
+
+    protected $id;
+    public $deviceid;
     public $title;
     public $description;
     public $vote;

@@ -11,7 +11,7 @@
  */
 
 
-class devices extends Controller
+class reviews extends Controller
 {
 
    /**
@@ -21,7 +21,7 @@ class devices extends Controller
     function __construct()
     {
         parent::__construct();
-        $this->model="Device";
+        $this->model="Review";
     }
 
     /**

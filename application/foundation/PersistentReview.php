@@ -16,7 +16,6 @@ class PersistentReview extends PersistentModel{
    
    
     public function update( & $device ) {
-        
 
         return parent::update($device);
     } 
