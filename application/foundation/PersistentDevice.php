@@ -11,7 +11,6 @@ class PersistentDevice extends PersistentModel{
 
     public function store( $device ) {
 
-
         parent::store($device);
 
         //ANY EXTRA LOGIC GOES HERE
@@ -29,12 +28,17 @@ class PersistentDevice extends PersistentModel{
 
     public function load( $deviceid ,$join=false) {
 
+        /** We must recover the human readable names of categoryid and brandid by joining on category and brand tables*/
 
         $joinarray=array(array("categories","categoryid"),array("brands","brandid"));
 
         $res = parent::load($deviceid,$joinarray);
 
         $device = new Device( $res );
+
+        if($device->imageurl==null){
+            $device->imageurl="img/devices/device_".$device->id.".png";
+        }
 
         $pr = new PersistentReview();
         $reviews=$pr->loadDeviceReviews($deviceid);
@@ -51,9 +55,9 @@ class PersistentDevice extends PersistentModel{
     } 
 
 
-    public function loadAll ($joinarray=false) {
+    public function loadAll ($join=false) {
 
-
+        /** We must recover the human readable names of categoryid and brandid by joining on category and brand tables*/
         $joinarray=array(array("categories","categoryid"),array("brands","brandid"));
 
         $arrRes = parent::loadAll($joinarray);
@@ -61,6 +65,11 @@ class PersistentDevice extends PersistentModel{
         $devices = array();
         foreach ($arrRes as $res) {
            $device = new Device( $res );
+
+            if($device->imageurl==null){
+                $device->imageurl="img/devices/device_".$device->id.".png";
+            }
+
            $devices[] = $device;
         }
         return $devices;

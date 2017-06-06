@@ -10,13 +10,14 @@ class Device extends Model
 
   /**  Define what columns can be filled during the storage of the Device (Protection for Sql Injection)
   */
-  protected $fillable=["categoryid","brandid","model","price"];
+  protected $fillable=["categoryid","brandid","model","price","imageurl"];
 
 
-    protected $id;
+
+    public $id;
     public $model;
     public $price;
-
+    public $imageurl;
 
     /**
      * @AssociationType Model.Category

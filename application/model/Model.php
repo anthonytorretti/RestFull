@@ -8,6 +8,7 @@
  */
 class Model
 {
+
     protected $fillable;
     function __construct($data)
     {
@@ -20,5 +21,6 @@ class Model
    public  function get_fillable(){
         return $this->fillable;
     }
+
 
 }
