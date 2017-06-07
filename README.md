@@ -38,7 +38,7 @@ Remeber always to restart Xampp or Apache when modifying configurations.
 
 There is no major installation required except for the Database to be setup and functional
 
-* Step 1
+* Step 1 Database Setup
 
   Open PhpmyAdmin or whatever Database manager you have on your system and create a new Database with any name you wish
   
@@ -46,7 +46,20 @@ There is no major installation required except for the Database to be setup and 
   
   This is the database structure corresponding to the "boilerplate model" already implemented on the Server     (Devices,Brands,Categories,Review)
   
-* Now you must open the project in your favorite IDE
+* Step 2 App Configuration
+
+   Now you must open the project in your favorite IDE
+   
+   Open the "config.php" file in the "application/config/" folder and setup the configuration for your Database
+   ```
+   define('DB_TYPE', 'mysql');
+   define('DB_HOST', '127.0.0.1');
+   define('DB_NAME', '[your database name]');
+   define('DB_USER', '[your db user name]');
+   define('DB_PASS', '[your db password]');
+   define('DB_CHARSET', 'utf8');
+   ```
+     
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 ```
 Give the example
