@@ -61,4 +61,5 @@ define('DB_PASS', 'password');
 define('DB_CHARSET', 'utf8');
 
 define('AUTHENTICATION_ENABLED',false);
+define('API_KEY',"12345");
 

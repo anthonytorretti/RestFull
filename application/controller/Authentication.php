@@ -8,7 +8,7 @@
  */
 class Authentication
 {
-    private $apikey ="12345";
+    private $apikey =API_KEY;
     private $userkey ="";
     private $authenticated=false;
 
